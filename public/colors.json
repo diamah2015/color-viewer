@@ -1,0 +1,22 @@
+[   {
+        "id": 1,
+        "nom": "Rouge",
+        "codeCouleur": "#FF0000"
+    },
+    {
+        "id": 2,
+        "nom": "Vert",
+        "codeCouleur": "#00FF00"
+    },
+    {
+        "id": 3,
+        "nom": "Bleu",
+        "codeCouleur": "#0000FF"
+    },
+    {
+        "id": 4,
+        "nom": "Jaune",
+        "codeCouleur": "#FFFF00"
+    }
+]
+	

@@ -1,0 +1,19 @@
+.rectangle-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 20px;
+  }
+  
+  .color-rectangle, .color-rectangle-selected {
+    width: 120px;
+    height: 120px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-weight: bold;
+    border: 1px solid black;
+    margin-top: 20px;
+  }
+  
