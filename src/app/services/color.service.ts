@@ -11,7 +11,7 @@ export interface Color {
 @Injectable({
   providedIn: 'root'
 })
-export class ColorsService {
+export class ColorService {   // <= Service au singulier
   constructor(private http: HttpClient) {}
 
   getColors(): Observable<Color[]> {

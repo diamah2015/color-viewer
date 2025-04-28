@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Color, ColorService } from '../../services/color.service.spec';
+import { Color, ColorService } from '../../services/color.service'; // <= Attention au bon import
 
 @Component({
   selector: 'app-color',
@@ -15,7 +15,7 @@ export class ColorComponent implements OnInit {
 
   ngOnInit(): void {
     this.colorService.getColors().subscribe(data => {
-      console.log(data)
+      console.log(data);
       this.colors = data;
     });
   }
