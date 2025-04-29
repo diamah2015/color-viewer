@@ -19,7 +19,6 @@ export class ColorService {   // <= Service au singulier
     return this.http.get<Color[]>('assets/colors.json').pipe(
       map(colors => colors.map(color => this.transformColor(color))) // Appliquer la transformation
     );    
-    return this.http.get<Color[]>('assets/colors.json');
   }
   private transformColor(color: any): Color {
     return {
