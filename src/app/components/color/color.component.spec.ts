@@ -22,8 +22,8 @@ describe('ColorComponent', () => {
 
     // Simuler la réponse du service pour les tests
     spyOn(service, 'getColors').and.returnValue(of([
-      { id: 1, nom: 'Rouge', codeCouleur: '#FF0000' },
-      { id: 2, nom: 'Vert', codeCouleur: '#00FF00' }
+      { id: 1, name: 'Rouge', colorCode: '#FF0000' }, // Champs 'name' et 'colorCode'
+      { id: 2, name: 'Vert', colorCode: '#00FF00' }
     ]));
 
     fixture.detectChanges(); // Déclenche ngOnInit
@@ -35,12 +35,12 @@ describe('ColorComponent', () => {
 
   it('should load colors on init', () => {
     expect(component.colors.length).toBe(2); // Vérifie que les couleurs sont chargées
-    expect(component.colors[0].nom).toBe('Rouge'); // Vérifie le nom de la première couleur
+    expect(component.colors[0].name).toBe('Rouge'); // Vérifie le nom de la première couleur
   });
 
   it('should set selectedColor when a color is selected', () => {
     component.onColorChange({ target: { value: '2' } } as any); // Simule la sélection de la couleur "Vert"
-    expect(component.selectedColor?.nom).toBe('Vert'); // Vérifie que la couleur sélectionnée est correcte
-    expect(component.selectedColor?.codeCouleur).toBe('#00FF00');
+    expect(component.selectedColor?.name).toBe('Vert'); // Vérifie que la couleur sélectionnée est correcte
+    expect(component.selectedColor?.colorCode).toBe('#00FF00');
   });
 });

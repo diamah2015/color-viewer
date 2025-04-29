@@ -2,23 +2,23 @@
 <select (change)="onColorChange($event)">
     <option value="">-- Sélectionner une couleur --</option>
     <option *ngFor="let color of colors" [value]="color.id">
-      {{ color.nom }}
+      {{ color.name }}
     </option>
   </select>
   
   <!-- Rectangle pour la couleur sélectionnée -->
   <div *ngIf="selectedColor" 
        class="color-rectangle-selected" 
-       [style.backgroundColor]="selectedColor.codeCouleur">
-    {{ selectedColor.nom }}
+       [style.backgroundColor]="selectedColor.colorCode">
+    {{ selectedColor.name }}
   </div>
   
   <!-- Liste de toutes les couleurs si aucune sélection -->
   <div class="rectangle-container" *ngIf="!selectedColor">
     <div *ngFor="let color of colors" 
          class="color-rectangle" 
-         [style.backgroundColor]="color.codeCouleur">
-      {{ color.nom }}
+         [style.backgroundColor]="color.colorCode">
+      {{ color.name }}
     </div>
   </div>
   

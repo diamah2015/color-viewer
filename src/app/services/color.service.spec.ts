@@ -19,15 +19,21 @@ describe('ColorService', () => {
     httpMock.verify();  // Vérifie que toutes les requêtes ont été traitées
   });
 
-  it('should retrieve colors from the API via GET', () => {
-    const dummyColors: Color[] = [
+  it('should retrieve colors from the API via GET and transform them', () => {
+    const dummyColors = [
       { id: 1, nom: 'Rouge', codeCouleur: '#FF0000' },
       { id: 2, nom: 'Vert', codeCouleur: '#00FF00' }
     ];
 
+    const expectedColors: Color[] = [
+      { id: 1, name: 'Rouge', colorCode: '#FF0000' },
+      { id: 2, name: 'Vert', colorCode: '#00FF00' }
+    ];
+
+    // Test pour vérifier que la méthode renvoie les données transformées
     service.getColors().subscribe(colors => {
       expect(colors.length).toBe(2);
-      expect(colors).toEqual(dummyColors);
+      expect(colors).toEqual(expectedColors);  // Vérification de la transformation des données
     });
 
     const request = httpMock.expectOne('assets/colors.json');
