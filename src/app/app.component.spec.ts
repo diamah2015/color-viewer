@@ -1,29 +1,29 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';  // Importe les outils de test nécessaires pour les composants Angular
-import { AppComponent } from './app.component';  // Importe le composant à tester
-import { NO_ERRORS_SCHEMA } from '@angular/core';  // Permet d'ignorer les erreurs liées aux composants non déclarés dans le test
+import { ComponentFixture, TestBed } from '@angular/core/testing';  // Import necessary Angular testing utilities
+import { AppComponent } from './app.component';  // Import the component to be tested
+import { NO_ERRORS_SCHEMA } from '@angular/core';  // Schema to ignore unknown elements and attributes in templates
 
 describe('AppComponent', () => {
   
-  // Déclarations des variables nécessaires pour les tests
+  // Declare variables for the component instance and the test fixture
   let fixture: ComponentFixture<AppComponent>;
   let app: AppComponent;
 
-  // beforeEach est exécuté avant chaque test pour préparer le module de test
+  // Step 1: Set up the testing module before each test
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [AppComponent],  // Déclare le composant à tester
-      schemas: [NO_ERRORS_SCHEMA]  // Ignore les erreurs pour les composants inconnus dans le template
-    }).compileComponents();  // Compile les composants afin de les rendre prêts à l'exécution
+      declarations: [AppComponent],  // Declare the AppComponent for testing
+      schemas: [NO_ERRORS_SCHEMA]     // Ignore errors for unknown components in the template
+    }).compileComponents();           // Compile the components to prepare them for testing
 
-    // Crée une instance de AppComponent pour pouvoir tester ses propriétés et comportements
+    // Step 2: Create an instance of AppComponent
     fixture = TestBed.createComponent(AppComponent);
-    app = fixture.componentInstance;  // Récupère l'instance du composant
-    fixture.detectChanges();  // Déclenche la détection des changements pour initialiser l'état du composant
+    app = fixture.componentInstance;  // Get the component instance
+    fixture.detectChanges();          // Trigger initial data binding and lifecycle hooks
   });
 
-  // Test 1 : Vérifie que le composant AppComponent est bien créé
+  // Step 3: Test to verify that the component is created successfully
   it('should create the app', () => {
-    expect(app).toBeTruthy();  // Vérifie que l'instance du composant existe et est valide
+    expect(app).toBeTruthy();  // The component instance should exist and be valid
   });
 
 });
