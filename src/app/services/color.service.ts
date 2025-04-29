@@ -1,17 +1,17 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { map, Observable } from 'rxjs';
+import { map, delay,Observable } from 'rxjs';
 
 export interface Color {
   id: number;
-  name: string;        // Name of the color
-  colorCode: string;   // Hex color code
+  name: string;        
+  colorCode: string;   
 }
 
 @Injectable({
   providedIn: 'root'
 })
-export class ColorService {   // <= Service au singulier
+export class ColorService {   
   constructor(private http: HttpClient) {}
 
   getColors(): Observable<Color[]> {
@@ -23,8 +23,8 @@ export class ColorService {   // <= Service au singulier
   private transformColor(color: any): Color {
     return {
       id: color.id,
-      name: color.nom,  // 'nom' devient 'name'
-      colorCode: color.codeCouleur // 'codeCouleur' devient 'colorCode'
+      name: color.nom,  
+      colorCode: color.codeCouleur 
     };
   }
 }

@@ -40,4 +40,15 @@ describe('ColorService', () => {
     expect(request.request.method).toBe('GET');
     request.flush(dummyColors);  // Simule la réponse de l'API
   });
+
+  it('should transform raw object Correctly',()=>
+    {
+      const rawColor={id:'1',nom:'Rouge',codeCouleur:'#FF0000'}
+      const transformedColor=(service as any).transformColor(rawColor);
+      expect(transformedColor).toEqual({id:'1',name:'Rouge',colorCode:'#FF0000'});
+    })
+
+
+
+
 });
