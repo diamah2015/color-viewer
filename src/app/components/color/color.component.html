@@ -1,24 +1,15 @@
 <!-- Sélecteur de couleur -->
-<select (change)="onColorChange($event)">
-    <option value="">-- Sélectionner une couleur --</option>
-    <option *ngFor="let color of colors" [value]="color.id">
-      {{ color.name }}
-    </option>
-  </select>
-  
-  <!-- Rectangle pour la couleur sélectionnée -->
-  <div *ngIf="selectedColor" 
-       class="color-rectangle-selected" 
-       [style.backgroundColor]="selectedColor.colorCode">
-    {{ selectedColor.name }}
-  </div>
-  
-  <!-- Liste de toutes les couleurs si aucune sélection -->
-  <div class="rectangle-container" *ngIf="!selectedColor">
-    <div *ngFor="let color of colors" 
-         class="color-rectangle" 
-         [style.backgroundColor]="color.colorCode">
-      {{ color.name }}
-    </div>
-  </div>
-  
+<select [(ngModel)]="selectedColor">
+  <option [ngValue]="null">-- Sélectionner une couleur --</option>
+  <option *ngFor="let color of colors" [ngValue]="color">
+    {{ color.name }}
+  </option>
+</select>
+
+
+<!-- Rectangle affiché SEULEMENT si une couleur est sélectionnée -->
+<div *ngIf="selectedColor"
+     class="color-rectangle-selected"
+     [style.backgroundColor]="selectedColor.colorCode">
+  {{ selectedColor.name }}
+</div>

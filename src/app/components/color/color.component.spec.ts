@@ -3,6 +3,7 @@ import { ColorComponent } from './color.component';
 import { ColorService } from '../../services/color.service';
 import { HttpClientTestingModule } from '@angular/common/http/testing';  // Assure-toi d'importer ce module
 import { of } from 'rxjs';
+import { FormsModule } from '@angular/forms';
 
 describe('ColorComponent', () => {
   let component: ColorComponent;
@@ -11,7 +12,7 @@ describe('ColorComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [HttpClientTestingModule],  // Ajoute HttpClientTestingModule ici
+      imports: [HttpClientTestingModule,FormsModule],  // Ajoute HttpClientTestingModule ici
       declarations: [ColorComponent],
       providers: [ColorService]  // Fournisseur du service ColorService
     }).compileComponents();
@@ -38,9 +39,12 @@ describe('ColorComponent', () => {
     expect(component.colors[0].name).toBe('Rouge'); // Vérifie le nom de la première couleur
   });
 
-  it('should set selectedColor when a color is selected', () => {
-    component.onColorChange({ target: { value: '2' } } as any); // Simule la sélection de la couleur "Vert"
-    expect(component.selectedColor?.name).toBe('Vert'); // Vérifie que la couleur sélectionnée est correcte
+  it('should set selectedColor when a color is selected (ngModel binding)', () => {
+    const colorToSelect = { id: 2, name: 'Vert', colorCode: '#00FF00' };
+    component.selectedColor = colorToSelect;
+    fixture.detectChanges();
+  
+    expect(component.selectedColor?.name).toBe('Vert');
     expect(component.selectedColor?.colorCode).toBe('#00FF00');
-  });
+  });  
 });

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Color, ColorService } from '../../services/color.service'; // <= Attention au bon import
+import { Color, ColorService } from '../../services/color.service';
 
 @Component({
   selector: 'app-color',
@@ -9,23 +9,14 @@ import { Color, ColorService } from '../../services/color.service'; // <= Attent
 })
 export class ColorComponent implements OnInit {
   colors: Color[] = [];
-  selectedColorId?: number;
+  selectedColor: Color | null = null; // <= null par défaut
 
   constructor(private colorService: ColorService) {}
 
   ngOnInit(): void {
     this.colorService.getColors().subscribe(data => {
-      console.log(data);
       this.colors = data;
+      // Pas besoin de toucher selectedColor ici
     });
-  }
-
-  onColorChange(event: Event): void {
-    const selectedId = Number((event.target as HTMLSelectElement).value);
-    this.selectedColorId = selectedId;
-  }
-
-  get selectedColor(): Color | undefined {
-    return this.colors.find(color => color.id === this.selectedColorId);
   }
 }
