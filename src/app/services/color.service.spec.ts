@@ -65,7 +65,23 @@ describe('ColorService', () => {
       expect(transformedColor).toEqual({id:'1',name:'Rouge',colorCode:'#FF0000'});
     })
 
-
+    it('should return an empty array when the API returns no colors', () => {
+      // Call the service method and subscribe to the result
+      service.getColors().subscribe(colors => {
+        // Verify that the returned array is exactly empty
+        expect(colors).toEqual([]);
+        // Verify that the array length is 0
+        expect(colors.length).toBe(0);
+      });
+    
+      // Expect a GET request to the correct JSON file
+      const request = httpMock.expectOne('assets/colors.json');
+      // Confirm the request method is GET
+      expect(request.request.method).toBe('GET');
+      // Simulate an API response with an empty array
+      request.flush([]);
+    });
+    
 
 
 });
