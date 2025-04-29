@@ -1,4 +1,4 @@
-<!-- Sélecteur de couleur -->
+<!-- Color selector -->
 <select [(ngModel)]="selectedColor">
   <option [ngValue]="null">-- Sélectionner une couleur --</option>
   <option *ngFor="let color of colors" [ngValue]="color">
@@ -7,7 +7,7 @@
 </select>
 
 
-<!-- Rectangle affiché SEULEMENT si une couleur est sélectionnée -->
+<!-- Rectangle displayed ONLY when a color is selected -->
 <div *ngIf="selectedColor"
      class="color-rectangle-selected"
      [style.backgroundColor]="selectedColor.colorCode">

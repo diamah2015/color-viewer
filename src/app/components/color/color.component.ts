@@ -9,14 +9,13 @@ import { Color, ColorService } from '../../services/color.service';
 })
 export class ColorComponent implements OnInit {
   colors: Color[] = [];
-  selectedColor: Color | null = null; // <= null par défaut
+  selectedColor: Color | null = null; // <= null Bydefault
 
   constructor(private colorService: ColorService) {}
 
   ngOnInit(): void {
     this.colorService.getColors().subscribe(data => {
       this.colors = data;
-      // Pas besoin de toucher selectedColor ici
     });
   }
 }
